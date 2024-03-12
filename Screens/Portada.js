@@ -1,22 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import BackgroundImage from '../Images/Home_Background_Animation00.png';
 
 const Portada = ({ navigation }) => {
 
   const handleJugarPress = () => {
-    navigation.navigate('Partides'); 
+    navigation.navigate('Partides');
   };
 
   const handleInvisibleButtonPress = () => {
     navigation.navigate('Opcions');
   };
 
-  const handleCrearPartidaPress = () => {
-    navigation.navigate('CrearPartida'); 
+  const handleCrearScreenPress = () => {
+    navigation.navigate('CrearScreen');
   };
 
   return (
-    <ImageBackground source={require('../Images/Home_Background_Animation00.png')} style={styles.backgroundImage}>
+    <ImageBackground source={BackgroundImage} style={styles.backgroundImage}>
       <View style={styles.container}>
         <View style={styles.topContainer}>
           <Text style={styles.title}>¡Bienvenido a...</Text>
@@ -28,18 +29,18 @@ const Portada = ({ navigation }) => {
             <Text style={[styles.buttonText, styles.buttonTextJugar]}>Jugar</Text>
           </TouchableOpacity>
           <View style={styles.separator}></View>
-          <TouchableOpacity style={[styles.button, styles.buttonCrearPartidaColor]} onPress={handleCrearPartidaPress}>
+          <TouchableOpacity style={[styles.button, styles.buttonCrearPartidaColor]} onPress={handleCrearScreenPress}>
             <Text style={[styles.buttonText, styles.buttonTextCrearPartida]}>Crear Partida</Text>
           </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.invisibleButton} onPress={handleInvisibleButtonPress}>
-        <Image source={require('../Images/Button_Settings.png')} style={styles.buttonImage} />
+          <Image source={require('../Images/Button_Settings.png')} style={styles.buttonImage} />
         </TouchableOpacity>
       </View>
     </ImageBackground>
   );
-  
-  
+
+
 };
 
 const styles = StyleSheet.create({
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     alignItems: 'center',
-    marginBottom: 120, 
+    marginBottom: 120,
   },
   buttonContainer: {
     alignItems: 'center',
@@ -65,12 +66,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: 'white',
+    color: '#2D9956',
   },
   title2: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#2D9956',
   },
   imageStyle: {
     width: 300,
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#008000', // Verde
   },
   buttonTextJugar: {
-    color: 'white', // Texto blanco
+    color: '#4CC25C', // Texto blanco
   },
   buttonTextCrearPartida: {
     color: '#FFC300', // Texto amarillo
@@ -111,15 +112,15 @@ const styles = StyleSheet.create({
     right: 0,
     width: 90,
     height: 90,
-  },  
+  },
   invisibleButton: {
     position: 'absolute',
     top: 0,
     right: 0,
     width: 90,
     height: 90,
-    backgroundColor: 'transparent', // Hacer el fondo transparente
-    borderRadius: 45, // Hacer el botón redondo
+    backgroundColor: 'transparent',
+    borderRadius: 45,
   },
 });
 
