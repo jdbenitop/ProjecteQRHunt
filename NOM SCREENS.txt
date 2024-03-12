@@ -1,0 +1,16 @@
+NOM SCREENS:
+Portada -> Portada.js
+Mis Partidas -> Partides.js
+Unete -> Join.js 
+Configuracio -> Opcions.js
+Pantalla Joc + Descripcio -> InfoPartida.js
+Eliminar Partida -> EliminarScreen.js
+Crear Partida -> CrearScreen.js
+Crear Pista Imagen -> CrearPistaImg.js
+Crear Pista Audio -> CrearPistaAud.js
+Crear Pista Text -> CrearPistaTxt.js
+Crear Pista Text (Mapa) -> CrearPistaTxt2.js
+Pistes -> Pistes.js
+Pista Correcta -> Correcte.js
+Pista Incorrecta -> Incorrecte.js
+Misión Completada -> MissionCompleted.js
