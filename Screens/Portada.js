@@ -2,8 +2,13 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
 
 const Portada = ({ navigation }) => {
+
   const handleJugarPress = () => {
     navigation.navigate('Partides'); 
+  };
+
+  const handleInvisibleButtonPress = () => {
+    navigation.navigate('Opcions');
   };
 
   const handleCrearPartidaPress = () => {
@@ -16,18 +21,20 @@ const Portada = ({ navigation }) => {
         <View style={styles.topContainer}>
           <Text style={styles.title}>¡Bienvenido a...</Text>
           <Image source={require('../Images/Logo.png')} style={styles.imageStyle} />
-          <Text style={styles.title2}>¡A la búsqueda del tesoro!</Text>
+          <Text style={styles.title2}>..la búsqueda del tesoro!</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={[styles.button, styles.buttonJugar]} onPress={handleJugarPress}>
+          <TouchableOpacity style={[styles.button, styles.buttonJugarColor]} onPress={handleJugarPress}>
             <Text style={[styles.buttonText, styles.buttonTextJugar]}>Jugar</Text>
           </TouchableOpacity>
           <View style={styles.separator}></View>
-          <TouchableOpacity style={[styles.button, styles.buttonCrearPartida]} onPress={handleCrearPartidaPress}>
+          <TouchableOpacity style={[styles.button, styles.buttonCrearPartidaColor]} onPress={handleCrearPartidaPress}>
             <Text style={[styles.buttonText, styles.buttonTextCrearPartida]}>Crear Partida</Text>
           </TouchableOpacity>
         </View>
-          <Image source={require('../Images/Button_Settings.png')} style={styles.buttonImage} />
+        <TouchableOpacity style={styles.invisibleButton} onPress={handleInvisibleButtonPress}>
+        <Image source={require('../Images/Button_Settings.png')} style={styles.buttonImage} />
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -83,10 +90,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  buttonJugar: {
+  buttonJugarColor: {
     backgroundColor: '#FFC300', // Amarillo oscuro
   },
-  buttonCrearPartida: {
+  buttonCrearPartidaColor: {
     backgroundColor: '#008000', // Verde
   },
   buttonTextJugar: {
@@ -105,6 +112,15 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
   },  
+  invisibleButton: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: 90,
+    height: 90,
+    backgroundColor: 'transparent', // Hacer el fondo transparente
+    borderRadius: 45, // Hacer el botón redondo
+  },
 });
 
 export default Portada;
