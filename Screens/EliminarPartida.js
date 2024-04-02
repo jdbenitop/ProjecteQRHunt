@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, handlegoBack } from 'react-native';
 
 export default function EliminarPartida({ navigation }) {
   const eliminarPartida = () => {
@@ -8,18 +8,20 @@ export default function EliminarPartida({ navigation }) {
     // Després de l'eliminació, pots redirigir a una altra pantalla, si cal
     // navigation.navigate('AltraPantalla');
     // També pots tornar enrere si es requereix
+    const  handlegoBack = () => {
     navigation.goBack();
   };
+}
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Eliminar Partida</Text>
+      <Text style={styles.title}>¿Eliminar Partida?</Text>
       <Text style={styles.description}>Aquesta partida serà eliminada definitivament.</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={eliminarPartida} style={[styles.button, { backgroundColor: 'red' }]}>
+        <TouchableOpacity onPress={handlegoBack} style={[styles.button, { backgroundColor: 'orange' }]}>
           <Text style={styles.buttonText}>Sí, eliminar</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={eliminarPartida} style={[styles.button, { backgroundColor: 'green' }]}>
+        <TouchableOpacity onPress={handlegoBack} style={[styles.button, { backgroundColor: 'green' }]}>
           <Text style={styles.buttonText}>No, tornar enrere</Text>
         </TouchableOpacity>
       </View>
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    Radius: 100
   },
   title: {
     fontSize: 24,
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     paddingHorizontal: 20,
+    Radius: 100
   },
   button: {
     paddingVertical: 10,
