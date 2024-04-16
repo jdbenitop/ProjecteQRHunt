@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 
 export default function PantallaPrincipal({ navigation }) {
+  const animatedValue = useRef(new Animated.Value(0)).current; // Usamos useRef para crear una referencia mutable
+
   const handlePress = () => {
-    navigation.navigate('SiguientePantalla');
-    
+    navigation.navigate('MisionCumplida');
   };
 
   return (
@@ -12,17 +13,24 @@ export default function PantallaPrincipal({ navigation }) {
       <Text style={styles.title}>MISSION COMPLETADA</Text>
      
       <Text style={styles.subtitle}>Muy bien aventurero, encontraste el tesoro escondido!</Text>
-      <Image
-        source={{ uri: '.\Images\Extra_Image' }} 
-        style={styles.image}
+      <Animated.Image
+        source={require('../Images/Extra_Image.png')} 
+        style={[styles.image, { transform: [{ rotateY: animatedValue.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '180deg'] }) }] }]}
       />
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
+      <TouchableOpacity style={styles.button} onPress={() => {
+        Animated.timing(animatedValue, {
+          toValue: 1,
+          duration: 1000, // Duración de la animación en milisegundos
+          useNativeDriver: true,
+        }).start(() => {
+          handlePress();
+        });
+      }}>
         <Text style={styles.buttonText}>CONTINUAR</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -53,8 +61,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 200, 
+    height: 200,
     marginBottom: 20,
   },
 });
